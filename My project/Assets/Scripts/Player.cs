@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask; 
+    [SerializeField] private Transform respawnPlace;
     private bool jumpKeyWasPressed;
     private float horizontalInput;
     private Rigidbody rigidBodyComponent;
@@ -53,6 +54,10 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Respawn"))
+        {
+            transform.position = respawnPlace.position;
         }
     }
     
